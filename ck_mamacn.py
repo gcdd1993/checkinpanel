@@ -62,4 +62,4 @@ if __name__ == "__main__":
     data = get_data()
     _check_items = data.get("MAMA", [])
     res = MAMA(check_items=_check_items).main()
-    send("MAMA", res)
+    send("妈妈网", res)
