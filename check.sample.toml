@@ -321,3 +321,9 @@ cookie = "JSESSIONID=xxxxxx; __yadk_uid=xxxxxx; OUTFOX_SEARCH_USER_ID_NCOO=xxxxx
 # http://bbs.zhiyoo.net cookie
 [[ZHIYOO]]
 cookie = "ikdQ_9242_saltkey=xxxxxx; ikdQ_9242_lastvisit=xxxxxx; ikdQ_9242_onlineusernum=xxxxxx; ikdQ_9242_sendmail=1; ikdQ_9242_seccode=xxxxxx; ikdQ_9242_ulastactivity=xxxxxx; ikdQ_9242_auth=xxxxxx; ikdQ_9242_connect_is_bind=xxxxxx; ikdQ_9242_nofavfid=xxxxxx; ikdQ_9242_checkpm=xxxxxx; ikdQ_9242_noticeTitle=1; ikdQ_9242_sid=xxxxxx; ikdQ_9242_lip=xxxxxx; ikdQ_9242_lastact=xxxxxx"
+
+# 妈妈网APP
+# https://van.mama.cn/welfare/v6/welfare/index/signIn cookie Referer#uid
+[[MAMA]]
+cookie = "PHPSESSID=a8dfc9428e617801910b77ef322df24a; app_init_data=%7B%22app%22%3A%22pt%22%2C%22client%22%3A%22pt%22%2C%22pt_rel%22%3A%22%22%2C%22device%22%3A%22%22%7D; Hm_ck_1658025319577=; Hm_lpvt_f2babe867b10ece0ff53079ad6c04981=1658025320; Hm_lvt_f2babe867b10ece0ff53079ad6c04981=1657639054,1657705778,1657952576,1658025320; Hm_ck_1658025319462=; Hm_lpvt_eb0574442ce2ba3b60f4105fa7df1e3c=1658025319; Hm_lvt_eb0574442ce2ba3b60f4105fa7df1e3c=1657639054,1657705778,1657952576,1658025319; app_passport_login_sid=57bq0uvvku6gr57e1384uauhj4; user_id=102710631; xkey=03f80158fd036de9c3fbc03520b7e4ae; pt_bb_birthday=2022-06-08; pt_mode=2; pt_open_mmid=7406a4ee499613fb88805acecdc61759833a532e; pt_prepare_pt_date=; pt_rel=2; pt_source=2; pt_version=12.4.2; PPSID=57bq0uvvku6gr57e1384uauhj4"
+uid = 102710631
