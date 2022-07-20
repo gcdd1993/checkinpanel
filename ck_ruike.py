@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 cron: 30 9 * * *
-new Env('妈妈网签到');
+new Env('瑞客论坛签到');
 """
 
 import requests
