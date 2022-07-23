@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 cron: 30 9 * * *
-new Env('扫描全能王签到');
+new Env('编程狮签到');
 """
 
 import time
