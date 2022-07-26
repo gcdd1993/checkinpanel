@@ -35,7 +35,7 @@ class CAMSCANNER:
 
     def sign(self, cs_ept_d, token):
         url = "https://v3.camscanner.com/app/rewardSignIn"
-        data = {
+        data_ = {
             "api_domain": "https://api-cs.intsig.net/user/cs",
             "client_app": "CamScanner_IP_FREE@6.19.1.2206212008",
             "country": "cn",
@@ -46,8 +46,12 @@ class CAMSCANNER:
             "timestamp": get_ts(),
             "token": token
         }
-        r = self.s.post(url, data=data).json()
-        return r
+        r = self.s.post(url, data=data_).json()
+        if r["data"]["ret"] == 0:
+            res_ = r["data"]["data"]
+            return f"签到成功，本次签到获得金币 {res_['value']}，连续签到 {res_['days']} 天"
+        else:
+            return f"签到失败，{r}"
 
     def main(self):
         msg_all = ""
@@ -57,7 +61,7 @@ class CAMSCANNER:
                 msg = f"签到信息: {sign_msg}"
                 msg_all += msg + "\n\n"
             except Exception as e:
-                msg = f"获取用户信息失败: {e}"
+                msg = f"签到失败: {e}"
                 print(msg)
                 msg_all += msg + "\n\n"
         return msg_all
