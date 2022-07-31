@@ -52,7 +52,7 @@ class LX:
             "deviceid": deviceid,
             "Authorization": f"Bearer {bearer_token}"
         })
-        r = self.s.post(url).json()
+        r = self.s.post(url, json={}).json()
         return r
 
     def main(self):
