@@ -23,7 +23,7 @@ class SspanelQd(object):
         self.check_items = check_items
 
     @staticmethod
-    def checkin(url, email, password):
+    def checkin(url, email, password, cookie):
         url = url.rstrip("/")
         email = email.split("@")
         if len(email) > 1:
@@ -48,28 +48,32 @@ class SspanelQd(object):
             print(f"未知错误，错误信息：\n{traceback.format_exc()}")
             return msg
 
-        login_url = url + "/auth/login"
-        headers = {
-            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36",
-            "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
-        }
+        if cookie is None:
+            login_url = url + "/auth/login"
+            headers = {
+                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36",
+                "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+            }
 
-        post_data = "email=" + email + "&passwd=" + password + "&code="
-        post_data = post_data.encode()
+            post_data = "email=" + email + "&passwd=" + password + "&code="
+            post_data = post_data.encode()
 
-        try:
-            response = session.post(login_url, post_data, headers=headers, verify=False)
-            res_str = response.text.encode("utf-8").decode("unicode_escape")
-            print(f"{url} 接口登录返回信息：{res_str}")
-            res_dict = json.loads(res_str)
-            if res_dict.get("ret") == 0:
-                msg = url + "\n" + str(res_dict.get("msg"))
+            try:
+                response = session.post(login_url, post_data, headers=headers, verify=False)
+                res_str = response.text.encode("utf-8").decode("unicode_escape")
+                print(f"{url} 接口登录返回信息：{res_str}")
+                res_dict = json.loads(res_str)
+                if res_dict.get("ret") == 0:
+                    msg = url + "\n" + str(res_dict.get("msg"))
+                    return msg
+            except Exception:
+                msg = url + "\n" + "登录失败，请查看日志"
+                print(f"登录失败，错误信息：\n{traceback.format_exc()}")
                 return msg
-        except Exception:
-            msg = url + "\n" + "登录失败，请查看日志"
-            print(f"登录失败，错误信息：\n{traceback.format_exc()}")
-            return msg
-
+        else:
+            session.headers.update({
+                "Cookie": cookie
+            })
         headers = {
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36",
             "Referer": url + "/user",
@@ -101,15 +105,15 @@ class SspanelQd(object):
             day = re.findall(r'\["Class_Expire", "(.*)"],', response.text)[0]
             rest = re.findall(r'\["Unused_Traffic", "(.*?)"]', response.text)[0]
             msg = (
-                url
-                + "\n- 今日签到信息："
-                + str(msg)
-                + "\n- 用户等级："
-                + str(level)
-                + "\n- 到期时间："
-                + str(day)
-                + "\n- 剩余流量："
-                + str(rest)
+                    url
+                    + "\n- 今日签到信息："
+                    + str(msg)
+                    + "\n- 用户等级："
+                    + str(level)
+                    + "\n- 到期时间："
+                    + str(day)
+                    + "\n- 剩余流量："
+                    + str(rest)
             )
         except Exception:
             pass
@@ -123,8 +127,9 @@ class SspanelQd(object):
             # 登录信息
             email = str(check_item.get("email"))
             password = str(check_item.get("password"))
+            cookie = str(check_item.get("cookie"))
             if url and email and password:
-                msg = self.checkin(url=url, email=email, password=password)
+                msg = self.checkin(url=url, email=email, password=password, cookie=cookie)
             else:
                 msg = "配置错误"
             msg_all += msg + "\n\n"
