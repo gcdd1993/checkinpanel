@@ -127,7 +127,7 @@ class SspanelQd(object):
             # 登录信息
             email = str(check_item.get("email"))
             password = str(check_item.get("password"))
-            cookie = str(check_item.get("cookie"))
+            cookie = check_item.get("cookie")
             if url and email and password:
                 msg = self.checkin(url=url, email=email, password=password, cookie=cookie)
             else:
