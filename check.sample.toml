@@ -327,3 +327,35 @@ cookie = "ikdQ_9242_saltkey=xxxxxx; ikdQ_9242_lastvisit=xxxxxx; ikdQ_9242_online
 [[MAMA]]
 cookie = "PHPSESSID=a8dfc9428e617801910b77ef322df24a; app_init_data=%7B%22app%22%3A%22pt%22%2C%22client%22%3A%22pt%22%2C%22pt_rel%22%3A%22%22%2C%22device%22%3A%22%22%7D; Hm_ck_1658025319577=; Hm_lpvt_f2babe867b10ece0ff53079ad6c04981=1658025320; Hm_lvt_f2babe867b10ece0ff53079ad6c04981=1657639054,1657705778,1657952576,1658025320; Hm_ck_1658025319462=; Hm_lpvt_eb0574442ce2ba3b60f4105fa7df1e3c=1658025319; Hm_lvt_eb0574442ce2ba3b60f4105fa7df1e3c=1657639054,1657705778,1657952576,1658025319; app_passport_login_sid=57bq0uvvku6gr57e1384uauhj4; user_id=102710631; xkey=03f80158fd036de9c3fbc03520b7e4ae; pt_bb_birthday=2022-06-08; pt_mode=2; pt_open_mmid=7406a4ee499613fb88805acecdc61759833a532e; pt_prepare_pt_date=; pt_rel=2; pt_source=2; pt_version=12.4.2; PPSID=57bq0uvvku6gr57e1384uauhj4"
 uid = 102710631
+
+# 亲宝宝APP
+# https://webapi.qbb6.com/h5/api/qbean/internal/user/sign/post
+[[QBB]]
+track_info = "NJtMllKkdSm"
+qbean_code = "1bWFrWG9LbjZma2tIUU0ySDRlT05qRkpWZkVmUC4xWW43am9iLmhDTHdWa3RIa0g1UEZMS3Z1V3B0WHFiWjVqWQ%3D%3D"
+account_id = "IknPz2KkdSm"
+
+# 瑞客论坛
+[[RUIKE]]
+cookie = "Hm_lvt_9d4dff14662c55b14fcd14fd34b8dcd8=1650797165; zzhh_2132_saltkey=f2kzUMmC; zzhh_2132_lastvisit=1657551818; zzhh_2132_atarget=1; zzhh_2132_auth=0f4fMdpwb7%2BsSLj%2F6x1QOIo4Lv2dqVLsF9Vw8nrVt%2FGWUWVpjO%2BTI9dinedn5i9gURyAQOcTat5NSH4dhZXS5bOl; zzhh_2132_lastcheckfeed=8159%7C1658069995; zzhh_2132_connect_is_bind=1; zzhh_2132_smile=1D1; zzhh_2132_visitedfid=47D42; zzhh_2132_forum_lastvisit=D_42_1659074699D_47_1659581881; Hm_lvt_73ad58a7cf08cf5833714aed91aa7068=1658976057,1659074498,1659582012,1660095119; zzhh_2132_sid=OZ046g; zzhh_2132_lip=180.114.144.20%2C1660094965; zzhh_2132_onlineusernum=750; zzhh_2132_ulastactivity=05c8wucjz%2B0pwlPpy%2BRhWAqLmRDXxgEwR2rcoaXsUoowia6Egd3B; zzhh_2132_sendmail=1; Hm_lpvt_73ad58a7cf08cf5833714aed91aa7068=1660126676; zzhh_2132_lastact=1660126522%09misc.php%09patch; zzhh_2132_lastact=1660126667%09plugin.php%09; zzhh_2132_connect_is_bind=1"
+
+# 扫描全能王 v3.camscanner.com 换token就行
+[[CAMSCANNER]]
+cs_ept_d = "7xRWBi3MQvNxvtVIxvRezDGWuXVKTMlPM4r8LghwPEawhXh VD7I0s oQjxAXxST"
+token = "2F6E6B86095A4E64f7Af1ARS"
+
+# 编程狮
+[[W3CSCHOOL]]
+cookie = "PHPSESSID=p1bnos8qgjdept1995401i3eho"
+apikey = "DY2VDV"
+apiauth = "e32evHB6xa/D4FDqpxOFzXDaxj+TK72/Vz8HWYiCo7w2uC+KVX1WS71KiOnUI2y2gw4c86cjxyVwXGg+qgSiVAjQV7Dk"
+
+# 哈弗智家 APP bt-h5-gateway.beantechyun.com
+[[HAVAL]]
+access_token = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NjI4NjQ0MjksImlhdCI6MTY2MjI1OTYyOSwiaXNzIjoiZ3d0IFNlcnZlciIsImJlYW5JZCI6IjIwNjU4NzE3NDQ1OTQ5NjA3OTkiLCJyb2xlQ29kZSI6Imd1ZXN0IiwiY2hhbm5lbCI6IkFENDY2OEYzREM1RTQxQ0I4NTk1NTMwOUFGNjc2RjJFIiwia2V5IjoiYmVhbi1hcHAtdXNlci1rZXkiLCJnd0lkIjoiMjA2NTg3MTc0NDU5NDk2MDc5OSIsImd3bUJyYW5kIjoiQ0NIMDAxIiwiand0VHlwZSI6IjEiLCJnd21ScyI6IjIifQ.ARBVrij5_qnN1PBSkwgsi1DuKC3b_KF56Ya54-Fiju64lEfBzTLkP4Eztrw7C9kHhgb-7-pABIbCSF-g8dmQfGfZikB7S25jpmQ_OgaWAMFRoklgZLh1aa9SHPh1aeNbwlU1N_nDmNCZkwoPh_YhodnuhCsyeCiAj48x_6oxOzu2QdKoCrgx6C6e8z49IKBqtpNsIQJNjwFxB-KGcvZRItmiVXeVo2tt4OVF1ZXIZ-bzANL49UQPsMFthRf8iQMYJBUTF_pw4JRthZXAZNxcuFpBQp0yG7hc0YJQf2PmZ3mvqldfVs6HK2oQ41Zm2JzRfyjSGUBjaDCCTKggD0oMipMLmNXzuJs"
+
+# 灵锡APP api.internetofcity.cn
+[[LX]]
+cookie = "SERVERID=906af12818c139543018e2fdb9c0ab45|1659197213|1659197185; acw_tc=2760824e16591971855512058e04f266aadb49035fe088d0f413744cad80a5"
+deviceid = "YQOdfH9LvRIDAO6EF8H1ecpP"
+bearer_token = "900c80d3-06cb-4156-88dc-d2eab3e476a4"
