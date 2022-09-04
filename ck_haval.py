@@ -36,7 +36,7 @@ class HAVAL:
             'rs': '2',
             'terminal': 'GW_APP_Haval',
             'If-Modified-Since': '0',
-            'tokenId': '45a7ce74225b4f9ea4f09f5e6ebaa7e6',
+            'tokenId': '5d1dae5e6ec74d8fb6376085834dba5b',
             'Connection': 'keep-alive',
             'Accept-Language': 'zh-CN,zh-Hans;q=0.9',
             'Accept': 'application/json, text/plain, */*',
