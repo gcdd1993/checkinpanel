@@ -23,7 +23,7 @@ class SspanelQd(object):
         self.check_items = check_items
 
     @staticmethod
-    def checkin(url, email, password, cookie):
+    def checkin(url, email, password):
         url = url.rstrip("/")
         email = email.split("@")
         if len(email) > 1:
@@ -48,32 +48,28 @@ class SspanelQd(object):
             print(f"未知错误，错误信息：\n{traceback.format_exc()}")
             return msg
 
-        if cookie is None:
-            login_url = url + "/auth/login"
-            headers = {
-                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36",
-                "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
-            }
+        login_url = url + "/auth/login"
+        headers = {
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36",
+            "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+        }
 
-            post_data = "email=" + email + "&passwd=" + password + "&code="
-            post_data = post_data.encode()
+        post_data = "email=" + email + "&passwd=" + password + "&code="
+        post_data = post_data.encode()
 
-            try:
-                response = session.post(login_url, post_data, headers=headers, verify=False)
-                res_str = response.text.encode("utf-8").decode("unicode_escape")
-                print(f"{url} 接口登录返回信息：{res_str}")
-                res_dict = json.loads(res_str)
-                if res_dict.get("ret") == 0:
-                    msg = url + "\n" + str(res_dict.get("msg"))
-                    return msg
-            except Exception:
-                msg = url + "\n" + "登录失败，请查看日志"
-                print(f"登录失败，错误信息：\n{traceback.format_exc()}")
+        try:
+            response = session.post(login_url, post_data, headers=headers, verify=False)
+            res_str = response.text.encode("utf-8").decode("unicode_escape")
+            print(f"{url} 接口登录返回信息：{res_str}")
+            res_dict = json.loads(res_str)
+            if res_dict.get("ret") == 0:
+                msg = url + "\n" + str(res_dict.get("msg"))
                 return msg
-        else:
-            session.headers.update({
-                "Cookie": cookie
-            })
+        except Exception:
+            msg = url + "\n" + "登录失败，请查看日志"
+            print(f"登录失败，错误信息：\n{traceback.format_exc()}")
+            return msg
+
         headers = {
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36",
             "Referer": url + "/user",
@@ -127,9 +123,8 @@ class SspanelQd(object):
             # 登录信息
             email = str(check_item.get("email"))
             password = str(check_item.get("password"))
-            cookie = check_item.get("cookie")
             if url and email and password:
-                msg = self.checkin(url=url, email=email, password=password, cookie=cookie)
+                msg = self.checkin(url=url, email=email, password=password)
             else:
                 msg = "配置错误"
             msg_all += msg + "\n\n"
