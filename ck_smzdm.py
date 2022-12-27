@@ -34,6 +34,7 @@ class Smzdm:
                     f"已经签到: {current.get('checkin', {}).get('daily_checkin_num', '')} 天"
                 )
             else:
+                # 加了验证码了 {"error_code":110202,"error_msg":"验证码输入错误，请重新输入","data":[]}
                 data = (
                     session.get(
                         url="https://zhiyou.smzdm.com/user/checkin/jsonp_checkin"
@@ -78,7 +79,7 @@ class Smzdm:
                     "Sec-Fetch-Mode": "no-cors",
                     "Sec-Fetch-Site": "same-site",
                     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-                    "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.131 Safari/537.36",
+                                  "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.131 Safari/537.36",
                 }
             )
             msg = self.sign(session)
