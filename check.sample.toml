@@ -359,3 +359,7 @@ access_token = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NjI4NjQ0MjksIml
 cookie = "SERVERID=906af12818c139543018e2fdb9c0ab45|1659197213|1659197185; acw_tc=2760824e16591971855512058e04f266aadb49035fe088d0f413744cad80a5"
 deviceid = "YQOdfH9LvRIDAO6EF8H1ecpP"
 bearer_token = "900c80d3-06cb-4156-88dc-d2eab3e476a4"
+
+# 黑料网BBS https://bbs.455.fun/
+[[HLW]]
+cookie = ""
