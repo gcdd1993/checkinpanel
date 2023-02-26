@@ -363,3 +363,4 @@ bearer_token = "900c80d3-06cb-4156-88dc-d2eab3e476a4"
 # 黑料网BBS https://bbs.455.fun/
 [[HLW]]
 cookie = ""
+proxy = "http://192.168.68.74:7892"

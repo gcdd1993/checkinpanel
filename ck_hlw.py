@@ -39,24 +39,28 @@ class HLW:
 
         for check_item in self.check_items:
             cookie = check_item.get("cookie")
+            proxy = check_item.get("proxy")
             s = requests.session()
-            s.headers.update(
-                {
-                    'authority': 'bbs.455.fun',
-                    'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
-                    'accept-language': 'zh-CN,zh;q=0.9,en;q=0.8',
-                    'cache-control': 'max-age=0',
-                    'dnt': '1',
-                    'origin': 'https://bbs.455.fun',
-                    'referer': 'https://bbs.455.fun/plugin.php?id=dsu_paulsign:sign',
-                    'upgrade-insecure-requests': '1',
-                    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36 Edg/110.0.1587.56',
-                    'Cookie': cookie,
-                    'content-type': 'application/x-www-form-urlencoded',
-                    'Host': 'bbs.455.fun',
-                    'Connection': 'keep-alive'
-                }
-            )
+            s.headers.update({
+                'authority': 'bbs.455.fun',
+                'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
+                'accept-language': 'zh-CN,zh;q=0.9,en;q=0.8',
+                'cache-control': 'max-age=0',
+                'dnt': '1',
+                'origin': 'https://bbs.455.fun',
+                'referer': 'https://bbs.455.fun/plugin.php?id=dsu_paulsign:sign',
+                'upgrade-insecure-requests': '1',
+                'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36 Edg/110.0.1587.56',
+                'Cookie': cookie,
+                'content-type': 'application/x-www-form-urlencoded',
+                'Host': 'bbs.455.fun',
+                'Connection': 'keep-alive'
+            })
+            if proxy:
+                s.proxies.update({
+                    'http': proxy,
+                    'https': proxy
+                })
             msg = self.sign(s)
             msg_all += msg + "\n\n"
         return msg_all
