@@ -364,3 +364,7 @@ bearer_token = "900c80d3-06cb-4156-88dc-d2eab3e476a4"
 [[HLW]]
 cookie = ""
 proxy = "http://192.168.68.74:7892"
+
+# 阿里云盘
+[[ALIYUNPAN]]
+refresh_token = "6cd87573874f4ee7ba39e78477c2d6b6"
