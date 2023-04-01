@@ -8,7 +8,6 @@ import requests
 
 from notify_mtr import send
 from utils import get_data
-from lxml import etree
 
 
 class RUIKE:
@@ -31,8 +30,8 @@ class RUIKE:
             'x-requested-with': 'XMLHttpRequest'
         })
 
-    def sign(self, cookie):
-        url = "https://www.ruike1.com/k_misign-sign.html?operation=qiandao&format=global_usernav_extra&formhash=06510fae&inajax=1&ajaxtarget=k_misign_topb"
+    def sign(self, cookie, formhash):
+        url = f"https://www.ruike1.com/k_misign-sign.html?operation=qiandao&format=global_usernav_extra&formhash={formhash}&inajax=1&ajaxtarget=k_misign_topb"
         self.s.headers.update({
             "cookie": cookie
         })
@@ -40,39 +39,38 @@ class RUIKE:
         r.encoding = "gbk"
         res = r.text
         if "今日已签" in res:
-            user_info = self.user_info(cookie)
-            msg = f"签到成功，本次签到获得金币 {user_info['award']}，连续签到 {user_info['day_num']} 天，签到等级 {user_info['sign_level']}级，签到总天数 {user_info['total_sign']}"
+            msg = "签到成功"
         else:
             msg = "签到失败\n" + res
         return msg
 
-    def user_info(self, cookie):
-        """
-        获取用户信息
-
-        """
-        url = "https://www.ruike1.com/k_misign-sign.html"
-        self.s.headers.update({
-            "cookie": cookie
-        })
-        text = self.s.get(url).text
-        html = etree.HTML(text)
-        return {
-            "day_num": html.xpath('//*[@id="lxdays"]/@value')[0],  # 连续签到总天数
-            "sign_level": html.xpath('//*[@id="lxlevel"]/@value')[0],  # 签到等级
-            "award": html.xpath('//*[@id="lxreward"]/@value')[0],  # 积分奖励
-            "total_sign": html.xpath('//*[@id="lxtdays"]/@value')[0]  # 签到总天数
-        }
+    # def user_info(self, cookie):
+    #     """
+    #     获取用户信息
+    #
+    #     """
+    #     url = "https://www.ruike1.com/k_misign-sign.html"
+    #     self.s.headers.update({
+    #         "cookie": cookie
+    #     })
+    #     text = self.s.get(url).text
+    #     html = etree.HTML(text)
+    #     return {
+    #         "day_num": html.xpath('//*[@id="lxdays"]/@value')[0],  # 连续签到总天数
+    #         "sign_level": html.xpath('//*[@id="lxlevel"]/@value')[0],  # 签到等级
+    #         "award": html.xpath('//*[@id="lxreward"]/@value')[0],  # 积分奖励
+    #         "total_sign": html.xpath('//*[@id="lxtdays"]/@value')[0]  # 签到总天数
+    #     }
 
     def main(self):
         msg_all = ""
         for check_item in self.check_items:
             try:
-                sign_msg = self.sign(check_item["cookie"])
+                sign_msg = self.sign(check_item["cookie"], check_item["formhash"])
                 msg = f"签到信息: {sign_msg}"
                 msg_all += msg + "\n\n"
             except Exception as e:
-                msg = f"获取用户信息失败: {e}，Cookie不包含 open_mmid"
+                msg = f"获取用户信息失败: {e}"
                 print(msg)
                 msg_all += msg + "\n\n"
         return msg_all
