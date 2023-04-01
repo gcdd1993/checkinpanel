@@ -28,14 +28,15 @@ class ALIYUNPAN:
             "refresh_token": refresh_token
         }
         r = self.s.post("https://auth.aliyundrive.com/v2/account/token", json=body).json()
-        return r["access_token"], r["nick_name"]
+        # print(r)
+        return r["access_token"], r["user_name"]
 
     def checkin(self, refresh_token):
         """
         签到
 
         """
-        (access_token, nick_name) = self.refresh_token(refresh_token)
+        (access_token, user_name) = self.refresh_token(refresh_token)
         # print(f"access_token : {access_token}")
         body = {
             "grant_type": 'refresh_token',
@@ -48,7 +49,7 @@ class ALIYUNPAN:
         if r["success"]:
             result = r["result"]
             sign_in_count = result["signInCount"]
-            msg = f"{nick_name} 签到成功 本月累计签到 {sign_in_count} 天"
+            msg = f"{user_name} 签到成功 本月累计签到 {sign_in_count} 天"
         else:
             msg = f"签到失败 {r['message']}"
         return msg
