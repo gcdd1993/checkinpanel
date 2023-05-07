@@ -59,7 +59,7 @@ https://raw.githubusercontent.com/OreosLab/checkinpanel/master/dailycheckin.json
 
 ### 2. 抓包配置
 
-下载1 [check.sample.toml](https://raw.githubusercontent.com/OreosLab/checkinpanel/master/check.sample.toml)，根据注释说明进行抓包并配置
+下载 [check.sample.toml](https://raw.githubusercontent.com/OreosLab/checkinpanel/master/check.sample.toml)，根据注释说明进行抓包并配置
 
 ### 3. 上传配置
 
