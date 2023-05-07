@@ -275,6 +275,10 @@ url = "https://www.haidan.video"
 [[SMZDM]]
 cookie = "__ckguid=xxxxxx; r_sort_type=xxxxx; __jsluid_s=xxxxxx; smzdm_user_source=xxxxxx; device_id=xxxxxx; homepage_sug=x; _zdmA.uid=xxxxxx; _zdmA.vid=x; footer_floating_layer=x; ad_date=xx; bannerCounter=xxxxxx; ad_json_feed=xxxxxx; _zdmA.time=xxxxxx; sess=xxxxxx; user=xxxxxx; smzdm_id=xxxxxx"
 
+# 什么值得买APP
+[[SMZDM_APP]]
+cookie = ""
+
 # 百度贴吧
 # https://tieba.baidu.com/index.html cookie
 [[TIEBA]]

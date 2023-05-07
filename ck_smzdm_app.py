@@ -4,17 +4,17 @@ cron: 51 9 * * *
 new Env('什么值得买APP');
 """
 
-
-import requests
+import hashlib
 import json
 import time
-import hashlib
+
+import requests
 
 from notify_mtr import send
 from utils import get_data
 
 
-class Smzdm:
+class SMZDM_APP:
     def __init__(self, check_items):
         self.check_items = check_items
 
@@ -48,7 +48,9 @@ class Smzdm:
                 "weixin": 1,
                 "time": Timestamp,
                 "token": token,
-                "sign": hashlib.md5(bytes(f'f=android&sk=ierkM0OZZbsuBKLoAgQ6OJneLMXBQXmzX+LXkNTuKch8Ui2jGlahuFyWIzBiDq/L&time={Timestamp}&token={token}&v=10.4.1&weixin=1&key=apr1$AwP!wRRT$gJ/q.X24poeBInlUJC', encoding='utf-8')).hexdigest().upper()
+                "sign": hashlib.md5(bytes(
+                    f'f=android&sk=ierkM0OZZbsuBKLoAgQ6OJneLMXBQXmzX+LXkNTuKch8Ui2jGlahuFyWIzBiDq/L&time={Timestamp}&token={token}&v=10.4.1&weixin=1&key=apr1$AwP!wRRT$gJ/q.X24poeBInlUJC',
+                    encoding='utf-8')).hexdigest().upper()
             }
             url = 'https://user-api.smzdm.com/checkin'
             url2 = 'https://user-api.smzdm.com/checkin/all_reward'
@@ -81,6 +83,6 @@ class Smzdm:
 
 if __name__ == "__main__":
     _data = get_data()
-    _check_items = _data.get("SMZDM", [])
-    result = Smzdm(check_items=_check_items).main()
+    _check_items = _data.get("SMZDM_APP", [])
+    result = SMZDM_APP(check_items=_check_items).main()
     send("什么值得买APP", result)
