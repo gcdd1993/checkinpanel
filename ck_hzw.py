@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 cron: 30 10 * * *
-new Env('亲宝宝签到');
+new Env('孩子王签到');
 """
 
 import requests
