@@ -33,6 +33,39 @@ class HZW:
         print(r)
         return r["msg"]
 
+    def new_period(self, uid):
+        """
+        开启新的签到周期（断签后需要）
+        :param uid:
+        :return:
+        """
+        url = f"https://marketingtools.cekid.com/sign-in/web/c/v1/sign/newPeriod?uid={uid}&rule_id=2"
+        r = self.s.get(url).json()
+        print(r)
+        return r["msg"]
+
+    def sign_history(self, uid):
+        """
+        签到历史记录
+        :param uid:
+        :return:
+        """
+        url = f"https://marketingtools.cekid.com/sign-in/web/c/v1/sign/detail?uid={uid}&rule_id=2&app_source=1"
+        r = self.s.get(url).json()
+        print(r)
+        message = "签到历史记录：\n"
+        total_rewards = 0
+        try:
+            for item in r["data"]["day_infos"]:
+                sequence = item["sequence"]
+                rewards = item["rewards"]["1"]
+                message += f"第{sequence}天：获得{rewards['prize_desc']}\n"
+                total_rewards += rewards["prize_value"]
+            message += f"总计：{total_rewards / 100}红包"
+        except Exception as e:
+            print(e)
+        return message
+
     def main(self):
         msg_all = ""
         for check_item in self.check_items:
@@ -42,7 +75,7 @@ class HZW:
                 self.s.headers.update({
                     'Cookie': cookie
                 })
-                sign_msg = self.sign(uid)
+                sign_msg = self.sign(uid) + "\n" + self.sign_history(uid)
                 msg = f"uid: {uid}\n签到信息: {sign_msg}"
                 msg_all += msg + "\n\n"
             except Exception as e:
