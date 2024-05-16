@@ -377,3 +377,8 @@ refresh_token = ""
 [[AHHHHFS]]
 cookie = ""
 nonce = ""
+
+# 孩子王签到
+[[HZW]]
+uid = ""
+cookie = ""
